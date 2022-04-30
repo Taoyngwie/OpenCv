@@ -1,21 +1,17 @@
 #ตอนที่ 17 - แสดงพิกัดด้วย Mouse (Event)
-#แสดงวันเวลาในกล้อง/วิดีโอ
-import cv2 
-import datetime
 
-cap = cv2.VideoCapture(0)
-while (cap.isOpened()):
-    check , frame = cap.read() #รับภาพจากกล้อง frame ต่อ frame เเละรับ boolean ใส่ตัวเเปร check
+import cv2
+img = cv2.imread("D:\\Destop\\Tao-OpenCV\\python-opencv-main\\image\\tree.jpg")
 
-    if check == True :
-        currentDate = str(datetime.datetime.now()) #ใช้เเสดงวันเวลาปัจจุบัน
-        cv2.putText(frame,currentDate,(10,30),cv2.FONT_HERSHEY_SIMPLEX,0.8,(0,255,0),cv2.LINE_4)
-        cv2.imshow("Output",frame)
-        if cv2.waitKey(1) & 0xFF == ord("e"):
-            break
-    else :
-        break
-
-cap.release()
+def clickPosition(event,x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        text = str(x)+","+str(y) #เก็บเลขพิกัดแกน x เเละ y เอาไว้
+        cv2.putText(img,text,(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),cv2.LINE_4)
+        cv2.imshow("Output",img)
+#เเสดงภาพ
+cv2.imshow("Output",img) 
+# ทำงานกับ mouse
+cv2.setMouseCallback("Output",clickPosition) #เมื่อมีการทำงานร่วมกันกับเมาส์
+cv2.waitKey(0) #จำนวนระยะเวลาในการแสดงภาพ
 cv2.destroyAllWindows()
 
