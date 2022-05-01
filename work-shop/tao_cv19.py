@@ -2,7 +2,7 @@
 
 import cv2
 import numpy
-img = numpy.zeros([400,400,3]) #สร้างภาพตัวอย่างสำหรับนำมาสร้างจุดเชื่อมโยง
+img = numpy.zeros([400,400,3]) #สร้างภาพตัวอย่างสำหรับนำมาสร้างจุดเชื่อมโยง(เเสดงผลเป็นพื้นหลังดำ)
 
 #img = cv2.imread("D:\\Destop\\Tao-OpenCV\\python-opencv-main\\image\\cat.jpg")
 

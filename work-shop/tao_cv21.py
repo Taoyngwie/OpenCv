@@ -6,7 +6,7 @@ from sklearn.preprocessing import scale
 #อ่านภาพ
 img = cv2.imread("D:\\Destop\\Tao-OpenCV\\python-opencv-main\\image\\taoyngwie.jpg")
 
-#อ่านไฟล์สำหรับ classification
+
 face_cascade = cv2.CascadeClassifier("D:\\Destop\\Tao-OpenCV\\python-opencv-main\\Detect\\haarcascade_frontalface_default.xml")
 
 #ทำให้ภาพสีเป็น grayscale
@@ -19,11 +19,11 @@ minNeighber = 5 #มันคือค่า thresholding คือค่าท�
 
 face_detect = face_cascade.detectMultiScale(gray_img,scaleFactor,minNeighber)
                             #detectMultiScale = เมธอดที่ใช้ในการตรวจจับใบหน้า
-#แสดงตำเเหน่งที่เจอใบหน้า
+
 for (x,y,w,h) in face_detect:
     cv2.rectangle(img,(x,y),(x+h,y+h),(0,255,0),thickness=2) #สร้างกล่องสี่เหลี่ยมขึ้นมา
 
-#เเสดงภาพ
+
 cv2.imshow("Output",img)
 #cv2.imshow("Grayscale",gray_img)
 cv2.waitKey(0)

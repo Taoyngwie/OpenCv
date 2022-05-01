@@ -1,0 +1,53 @@
+#ตอนที่ 33 - แสดง Threshold ใน Matplotlib
+
+from operator import le
+import cv2
+import matplotlib.pyplot as plt
+from numpy import imag
+
+gray_img = cv2.imread("D:\Destop\Tao-OpenCV\python-opencv-main\image\gradient.png")
+
+
+#ทำภาพเป็นเเบบบนารี่โดยใช้งาน Threshold เเบบต่างๆ
+
+#เเบบที่ 1
+thresh,th1 = cv2.threshold(gray_img,128,255,cv2.THRESH_BINARY)
+    #โดยค่าจากตัวเเปร thresh คือค่ากลางที่เราระบุจากค่าจุดเเบ่ง 128
+    #ค่าจากตัวเเปร result คือรับค่ามาจาก แปลง grayscale ไปเป็น binary
+
+#เเบบที่ 2
+thresh,th2 = cv2.threshold(gray_img,128,255,cv2.THRESH_BINARY_INV)
+    #โดยค่าจากตัวเเปร thresh คือค่ากลางที่เราระบุจากค่าจุดเเบ่ง 128
+    #ค่าจากตัวเเปร result คือรับค่ามาจาก แปลง grayscale ไปเป็น BINARY_INV
+
+#เเบบที่ 3
+thresh,th3 = cv2.threshold(gray_img,128,255,cv2.THRESH_TRUNC)
+    #โดยค่าจากตัวเเปร thresh คือค่ากลางที่เราระบุจากค่าจุดเเบ่ง 128
+    #ค่าจากตัวเเปร result คือรับค่ามาจาก แปลง grayscale ไปเป็น THRESH_TRUNC
+
+#เเบบที่ 4
+thresh,th4 = cv2.threshold(gray_img,128,255,cv2.THRESH_TOZERO)
+    #โดยค่าจากตัวเเปร thresh คือค่ากลางที่เราระบุจากค่าจุดเเบ่ง 128
+    #ค่าจากตัวเเปร result คือรับค่ามาจาก แปลง grayscale ไปเป็น THRESH_TOZERO
+
+#เเบบที่ 5
+thresh,th5 = cv2.threshold(gray_img,128,255,cv2.THRESH_TOZERO_INV)
+    #โดยค่าจากตัวเเปร thresh คือค่ากลางที่เราระบุจากค่าจุดเเบ่ง 128
+    #ค่าจากตัวเเปร result คือรับค่ามาจาก แปลง grayscale ไปเป็น TOZERO_INV
+
+imags = [gray_img,th1,th2,th3,th4,th5]
+titles = ["Original","Binary","Binary_INV","TRUNC","Tozero","Tozero_inv"]
+
+#นำมาplot โดยใช้ forloop
+for i in range(len(imags)):
+    plt.subplot(2,3,i+1)
+    plt.imshow(imags[i])
+    plt.title(titles[i])
+    plt.xticks([]),plt.yticks([])
+
+plt.show()
+
+
+cv2.waitKey(0) #ใส่เพื่อเเสดงค้างไว้
+cv2.destroyAllWindows()
+
