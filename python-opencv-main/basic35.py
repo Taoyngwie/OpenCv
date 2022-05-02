@@ -1,10 +1,10 @@
-#ตัวกรอง Convolution ด้วย Filter2D
+#เธ•เธฑเธงเธ�เธฃเธญเธ� Convolution เธ”เน�เธงเธข Filter2D
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
 #original
-img = cv2.imread("image/noise.png")
+img = cv2.imread("D:\\Destop\\Tao-OpenCV\\python-opencv-main\\image\\noise.png")
 
 #filter
 filter2d = cv2.filter2D(img,-1,np.ones((5,5),np.float32)/25)
